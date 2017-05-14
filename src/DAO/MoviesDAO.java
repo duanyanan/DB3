@@ -68,7 +68,7 @@ import java.util.*;
 
     public ArrayList<Directors> SearchMovieDirectorsByMoiveID(String movieid) {
         ArrayList<Directors> directorsList = new ArrayList<Directors>();
-        String search = "select * from directors,movies2directors where movies.movieid = ? and directors.directorid = movies2directors.directorid";
+        String search = "select * from directors,movies2directors where movies2directors.movieid = ? and directors.directorid = movies2directors.directorid";
         ResultSet rs = null;
         PreparedStatement pstmt = null;
         try {
@@ -91,7 +91,7 @@ import java.util.*;
 
     public ArrayList<Editors> SearchMovieEditorsByMoiveID(String movieid) {
         ArrayList<Editors> editorsList = new ArrayList<Editors>();
-        String search = "select * from editors,movies2editors where movies.movieid = ? and editors.editoid = movies2editors.editorid";
+        String search = "select * from editors,movies2editors where movies2editors.movieid = ? and editors.editoid = movies2editors.editorid";
         ResultSet rs = null;
         PreparedStatement pstmt = null;
         try {
@@ -112,7 +112,26 @@ import java.util.*;
         return editorsList;
     }
 
-
+    public Movies SearchMovieByMovieID(String movieid) {
+        Movies newMovie = new Movies();
+        String search = "select * from movies where movieid = ?";//and imdb = ?";
+        ResultSet rs = null;
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = connect.prepareStatement(search);
+            pstmt.setString(1,movieid);
+            rs = pstmt.executeQuery();
+            newMovie.setMovieid(rs.getString("movieid"));
+            newMovie.setTitle(rs.getString("title"));
+            newMovie.setYear(rs.getString("year"));
+            newMovie.setImdbid(rs.getString("imdbid"));
+            rs.close();
+            return newMovie;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return newMovie;
+    }
 
     public boolean DeleteMovie(String movieTitle,String imdbid) {
         if (movieTitle == null || imdbid == null)

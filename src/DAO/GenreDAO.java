@@ -17,7 +17,7 @@ public class GenreDAO {
     public HashMap<String,String> GetTopGenre() {
         HashMap<String,String> genrelist = new HashMap<String,String>();
         String search = "select genre,count(movieid) as a " +
-                "from genres group by genre order by a DESC";
+                "from genres group by genre order by a DESC limit 10";
         PreparedStatement pstmt;
         try {
             pstmt = connect.prepareStatement(search);

@@ -1,6 +1,8 @@
 package Application;
 
 import DAO.GenreDAO;
+import DAO.LanguageDAO;
+
 import java.util.HashMap;
 
 /**
@@ -11,16 +13,34 @@ public class View {
     private HashMap<String,String> topGenre;
     private HashMap<String,String> topLang;
 
-    public void ShowTopGenre() {
+    public String ShowTopGenre() {
         connetion.GetDriver();
         connetion.Connection();
         GenreDAO newGenreDAO = new GenreDAO();
         newGenreDAO.setGenreDAO(connetion.connect);
         setTopGenre(newGenreDAO.GetTopGenre());
+        System.out.print("lalalalal");
+        String la = "lalalala";
+        System.out.print(topGenre);
         connetion.DisCon();
+        return "1";
     }
 
-    public void
+    public String ShowTopLang() {
+        connetion.GetDriver();
+        connetion.Connection();
+        LanguageDAO newLangDAO = new LanguageDAO();
+        newLangDAO.setlanguageDAO(connetion.connect);
+        setTopLang(newLangDAO.GetTopLang());
+        connetion.DisCon();
+        return "1";
+    }
+
+    public String ShowBoth() {
+        ShowTopGenre();
+        ShowTopLang();
+        return "1";
+    }
     public HashMap<String, String> getTopGenre() {
         return topGenre;
     }

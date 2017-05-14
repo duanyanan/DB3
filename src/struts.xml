@@ -10,5 +10,20 @@
         <action name="SearchMovieByName" class="Application.Search" method="SearchMovieByName">
             <result name="1">/SearchMovieResult.jsp</result>
         </action>
+
+        <action name="ShowTopGenre" class="Application.View" method="ShowTopGenre">
+            <result name="1">/index.jsp</result>
+        </action>
+
+        <action name="ShowTopLang" class="Application.View" method="ShowTopLang">
+            <result name="1">/index.jsp</result>
+        </action>
+        <action name="ShowBoth" class="Application.View" method="ShowBoth">
+            <result name="1">/main.jsp</result>
+        </action>
+
+        <action name="SearchMovieDetail" class="Application.Search" method="SearchMovieDetail">
+            <result name="1">/MovieDetail.jsp</result>
+        </action>
     </package>
 </struts>

@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class RatingDAO {
     Connection connect = null;
-    public void setGenreDAO(Connection connet) {
+    public void setRatingDAO(Connection connet) {
         this.connect = connet;
     }
 

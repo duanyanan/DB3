@@ -22,23 +22,21 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-    </tr>
-    <s:property value="lalala"/>
     <s:iterator value="searchresult_movies" id='s'>
-
-
         <tr>
             <td><s:property value="#s.title"/></td>
             <td><s:property value="#s.year"/></td>
             <td><s:property value="#s.imdbid"/> </td>
+
+            <td>
+                <form action="SearchMovieDetail">
+                    <button type="submit" class="btn btn-primary">Detail</button>
+                    <input type="hidden" name="search_movie_id" value=<s:property value="#s.movieid"/>>
+                </form>
+            </td>
+
         </tr>
-
     </s:iterator>
-
     </tbody>
 </table>
 </body>
